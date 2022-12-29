@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.0.6 (2022-12-29)
+### Fix
+* Name README.md ([`968e219`](https://github.com/Luferov/graphene-fastapi-subscriptions/commit/968e219f54b9453b484b4b14970eba111bbb328a))
+
 ## v0.0.5 (2022-12-29)
 ### Fix
 * Deploy ([`163f08d`](https://github.com/Luferov/graphene-fastapi-subscriptions/commit/163f08d3294003148cde99db884a6c8720e49b11))
