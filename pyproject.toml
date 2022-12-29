@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "graphene-fastapi-subscription"
+name = "graphene_subscriptions"
 version = "0.1.0"
 description = "Subscriptions for graphene"
 authors = ["Victor <lyferov@yandex.ru>"]
@@ -54,7 +54,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.semantic_release]
 version_variable = [
-    "devind_dictionaries/__init__.py:__version__",
+    "graphene_subscriptions/__init__.py:__version__",
     "pyproject.toml:version"
 ]
 branch = "main"
