@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.0.3 (2022-12-29)
+### Fix
+* Typo ([`72fa25e`](https://github.com/Luferov/graphene-fastapi-subscription/commit/72fa25ea3a61720239a4a3117515fdb9484d8be2))
+
 ## v0.0.2 (2022-12-29)
 ### Fix
 * Allow python version ([`c98ea85`](https://github.com/Luferov/graphene-fastapi-subscription/commit/c98ea8571addafef35b14d3499934e6d45b17aec))
