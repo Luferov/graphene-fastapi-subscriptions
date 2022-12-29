@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "graphene-fastapi-subscriptions"
-version = "0.0.4"
+version = "0.0.5"
 description = "Subscriptions for graphene"
 authors = ["Victor <lyferov@yandex.ru>"]
 license = "MIT"
