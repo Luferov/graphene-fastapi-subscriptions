@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "graphene_subscriptions"
+name = "graphene-fastapi-subscriptions"
 version = "0.0.4"
 description = "Subscriptions for graphene"
 authors = ["Victor <lyferov@yandex.ru>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "graphene_fastapi_subscription"}]
+packages = [{include = "graphene_subscriptions"}]
 keywords = ["fastapi", "graphene", "subscriptions", "realtime"]
-homepage = "https://github.com/devind-team/devind-django-dictionaries"
-repository = "https://github.com/devind-team/devind-django-dictionaries"
+homepage = "https://github.com/Luferov/graphene-fastapi-subscription"
+repository = "https://github.com/Luferov/graphene-fastapi-subscription"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",

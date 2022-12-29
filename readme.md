@@ -5,12 +5,12 @@
 To install graphene, just run this command in your shell
 
 ```shell
-pip install graphene-fastapi-subscription
+pip install graphene-fastapi-subscriptions
 ```
 or
 Via poetry
 ```shell
-poetry add graphene-fastapi-subscription
+poetry add graphene-fastapi-subscriptions
 ```
 
 
