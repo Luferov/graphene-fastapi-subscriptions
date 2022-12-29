@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.0.4 (2022-12-29)
+### Fix
+* Versions ([`30b4130`](https://github.com/Luferov/graphene-fastapi-subscription/commit/30b4130968a653a1f41fe1a62d10bc12519ef409))
+
 ## v0.0.3 (2022-12-29)
 ### Fix
 * Typo ([`72fa25e`](https://github.com/Luferov/graphene-fastapi-subscription/commit/72fa25ea3a61720239a4a3117515fdb9484d8be2))
