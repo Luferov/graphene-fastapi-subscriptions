@@ -10,7 +10,7 @@ pip install graphene-fastapi-subscription
 or
 Via poetry
 ```shell
-postry add graphene-fastapi-subscription
+poetry add graphene-fastapi-subscription
 ```
 
 
