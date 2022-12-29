@@ -1,0 +1,10 @@
+[flake8]
+max-line-length = 120
+# ignore = ANN002,ANN003,ANN101,ANN102,D106,D107
+per-file-ignores =
+    __init__.py:F401
+ignore = ANN001,ANN002,ANN003,ANN101,ANN102,ANN401,D106,D107
+exclude = .git,__pycache__,examples
+
+import-order-style = pycharm
+dictionaries=en_US,python,technical

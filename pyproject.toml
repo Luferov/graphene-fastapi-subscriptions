@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "graphene-fastapi-subscription"
+version = "0.1.0"
+description = "Subscriptions for graphene"
+authors = ["Victor <lyferov@yandex.ru>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "graphene_fastapi_subscription"}]
+keywords = ["fastapi", "graphene", "subscriptions", "realtime"]
+homepage = "https://github.com/devind-team/devind-django-dictionaries"
+repository = "https://github.com/devind-team/devind-django-dictionaries"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Framework :: FastAPI",
+    "Library :: graphene"
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+graphene = "^3.2.1"
+fastapi = "^0.88.0"
+starlette-graphene3 = "^0.6.0"
+msgpack = "^1.0.4"
+aioredis = "^2.0.1"
+uvicorn = {extras = ["standard"], version = "^0.20.0"}
+
+
+
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
+uvicorn = "^0.20.0"
+pytest = "^7.2.0"
+flake8-import-order = "^0.18.1"
+flake8-docstrings = "^1.6.0"
+flake8-builtins = "^1.5.3"
+flake8-quotes = "^3.3.1"
+flake8-comprehensions = "^3.8.0"
+flake8-eradicate = "^1.2.0"
+flake8-simplify = "^0.19.2"
+flake8-spellcheck = "^0.28.0"
+pep8-naming = "^0.13.0"
+flake8-use-fstring = "^1.3"
+flake8-annotations = "^2.7.0"
+coveralls = "^3.3.1"
+python-dotenv = "^0.20.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.semantic_release]
+version_variable = [
+    "devind_dictionaries/__init__.py:__version__",
+    "pyproject.toml:version"
+]
+branch = "main"
+upload_to_pypi = true
+upload_to_release = true
+build_command = "pip install poetry && poetry build"
