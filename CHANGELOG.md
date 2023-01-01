@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.1 (2023-01-01)
+### Fix
+* Fix readme.md ([`3a2b8de`](https://github.com/Luferov/graphene-fastapi-subscriptions/commit/3a2b8de47af5e683a3ccfc8915055c4808b04d4c))
+
 ## v0.1.0 (2023-01-01)
 ### Feature
 * Lifecycle functions become async function ([`c558f26`](https://github.com/Luferov/graphene-fastapi-subscriptions/commit/c558f2674208595882cbf91920e3bff3e9904d91))
