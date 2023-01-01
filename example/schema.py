@@ -58,17 +58,17 @@ class MessageSubscription(_Subscription):
     message = graphene.String()
 
     @staticmethod
-    def group_name(root, info, chat_id: int, *args, **kwargs) -> Optional[str]:
+    async def group_name(root, info, chat_id: int, *args, **kwargs) -> Optional[str]:
         """Subscribe to group."""
         return f'chat.${chat_id}'
 
     @staticmethod
-    def pre_start(root, info, chat_id, *args, **kwargs):
+    async def subscribe(root, info, chat_id, *args, **kwargs):
         """Send MessageSubscription before start."""
         return [MessageSubscription(message='Message from pre')]
 
     @staticmethod
-    def publish(payload, info, chat_id: int, *args, **kwargs) -> Union['MessageSubscription', 'MessageSubscription.SKIP']:
+    async def publish(payload, info, chat_id: int, *args, **kwargs) -> Union['MessageSubscription', 'MessageSubscription.SKIP']:
         """"Receive payload."""
         message: str = payload.get('message', MessageSubscription.SKIP)
         if message == MessageSubscription.SKIP or message == 'skip':
@@ -76,7 +76,7 @@ class MessageSubscription(_Subscription):
         return MessageSubscription(message=payload.get('message'))
 
     @staticmethod
-    def unsubscribe(root, info, chat_id: int, *args, **kwargs):
+    async def unsubscribe(root, info, chat_id: int, *args, **kwargs):
         """Unsubscribe from channel."""
         print(f'Unsubscribe from: {chat_id}')
 

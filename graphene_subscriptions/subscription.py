@@ -1,10 +1,9 @@
 """Module for subscriptions."""
 import asyncio
 import collections
-from typing import Dict, Type, Callable, Optional, Union, List
+from typing import Dict, Type, Callable, Optional, Union, Sequence
 
 import graphene.utils.props
-from fastapi.concurrency import run_in_threadpool
 from graphene import ObjectType, Argument, Field
 from graphene.types.objecttype import ObjectTypeOptions
 from graphene.types.utils import yank_fields_from_attrs
@@ -23,9 +22,9 @@ class SubscriptionOptions(ObjectTypeOptions):
 
     # Subscribe function
     group_name: Optional[Callable] = None
+    subscribe: Optional[Callable] = None
     publish: Optional[Callable] = None
     unsubscribe: Optional[Callable] = None
-    pre_start: Optional[Callable] = None
 
     # channel layer: InMemory, RedisPubSubChannelLayer
     # default: InMemoryChannel Layer
@@ -54,7 +53,7 @@ class Subscription(ObjectType):
         output=None,
         resolver=None,
         group_name=None,
-        pre_start=None,
+        subscribe=None,
         publish=None,
         unsubscribe=None,
         channel_layer=None,
@@ -87,7 +86,7 @@ class Subscription(ObjectType):
         )
         group_name = group_name or getattr(cls, 'group_name', None)
         unsubscribe = unsubscribe or getattr(cls, 'unsubscribe', None)
-        pre_start = pre_start or getattr(cls, 'pre_start', None)
+        subscribe = subscribe or getattr(cls, 'subscribe', None)
 
         if _meta.fields:
             _meta.fields.update(fields)
@@ -99,7 +98,7 @@ class Subscription(ObjectType):
         _meta.resolver = get_unbound_function(cls._subscribe)
         _meta.publish = get_unbound_function(publish)
         _meta.group_name = get_unbound_function(group_name)
-        _meta.pre_start = get_unbound_function(pre_start)
+        _meta.subscribe = get_unbound_function(subscribe)
         _meta.unsubscribe = get_unbound_function(unsubscribe)
         _meta.channel_layer = channel_layer
 
@@ -119,8 +118,8 @@ class Subscription(ObjectType):
         await channel_layer.group_add(group_channel_name, channel)
 
         # Present information
-        if callable(cls._meta.pre_start):
-            elements: List = await run_in_threadpool(cls._meta.pre_start, root, info, *args, **kwargs)
+        if callable(cls._meta.subscribe):
+            elements: Sequence = await cls._meta.subscribe(root, info, *args, **kwargs)
             if elements:
                 for element in elements:
                     yield element
@@ -129,13 +128,13 @@ class Subscription(ObjectType):
             # General loop
             while True:
                 message = await channel_layer.receive(channel)
-                publish_result = await run_in_threadpool(cls._meta.publish, message, info, *args, **kwargs)
+                publish_result = await cls._meta.publish(message, info, *args, **kwargs)
                 if publish_result is None or publish_result == cls.SKIP:
                     continue
                 yield publish_result
         finally:
             # Connection is close
-            await run_in_threadpool(cls._meta.unsubscribe, root, info, *args, **kwargs)
+            await cls._meta.unsubscribe(root, info, *args, **kwargs)
             await channel_layer.group_discard(group_channel_name, channel)
 
     ################################################################################
